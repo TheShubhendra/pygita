@@ -1,0 +1,4 @@
+buid/
+pygita/__pycache__
+dist/
+gita.egg-info
