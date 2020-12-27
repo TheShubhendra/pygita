@@ -1,5 +1,9 @@
 # pygita
 pygita is a wrapper of [bhagavadgita.io](https://bhagavadgita.io) api for Python 3
+
+![PyPI - License](https://img.shields.io/pypi/l/pygita)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/pygita)
+![GitHub last commit](https://img.shields.io/github/last-commit/TheShubhendra/pygita)
 # Installation
 Install it from pypi using pip
 
