@@ -15,12 +15,12 @@ pip install pygita
 - Register on [bhagavadgita.io](https://bhagavadgita.io)
 - Create App
 - Copy  Client Id and Client Secret 
-- ```python
+- `python
 pygita.auth(client_id,client_secret)
-```
+`
 
 # Usage
-  1. Authentication using client_id and secret_id
+  ### 1. Authentication using client_id and secret_id
 
    This function generate a new access_token
 
