@@ -4,60 +4,76 @@ pygita is a wrapper of [bhagavadgita.io](https://bhagavadgita.io) api for Python
 ![PyPI - License](https://img.shields.io/pypi/l/pygita)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/pygita)
 ![GitHub last commit](https://img.shields.io/github/last-commit/TheShubhendra/pygita)
+
 # Installation
 Install it from pypi using pip
+```
+pip install pygita
+```
 
-`pip install pygita`
 # Authentication
-*  Register on [bhagavadgita.io](https://bhagavadgita.io)
-*  Create App
-* Copy  Client Id and Client Secret 
-* ```pygita.auth(client_id,client_secret)```
+- Register on [bhagavadgita.io](https://bhagavadgita.io)
+- Create App
+- Copy  Client Id and Client Secret 
+- ```python
+pygita.auth(client_id,client_secret)
+```
 
 # Usage
-  ### 1. Authentication using client_id and secret_id
-  This function generate a new access_token
-  `pygita.auth(client_id, client_secret)
-  `
+  1. Authentication using client_id and secret_id
+
+   This function generate a new access_token
+
+  ```python
+pygita.auth(client_id, client_secret)
+  ```
   -----------------------------------
   ### 2. Authentication using access_token
+
   If you have access_token, you don't need to generate a new one.
   
-  `pygita.auth_token(access_token)
-  `
+  ```python
+pygita.auth_token(access_token)
+  ````
   -----------------------------------
   ### 3. Get all chapters 
   
-  ` chapter_list = pygita.get_chapter()
-  `
+  ```python
+chapter_list = pygita.get_chapter()
+  ```
   -----------------------------------
   
   
   ### 4. Get a specific chapter
-  `chapter = pygita.get_chapter(chapter_number)
-  `
+  ```python
+chapter = pygita.get_chapter(chapter_number)
+  ```
   -----------------------------------
   
   ### 5. Get all Verses from all chapters
   
-  `list_of_all_verses = pygita.get_verse()
-  `
+  ```python
+list_of_all_verses = pygita.get_verse()
+  ```
   -----------------------------------
   
   ### 6. Get all Verses from a specific chapter
-  `verses = pygita.get_verse(chapter_number=chapter_number)
-  `
+  ```python
+verses = pygita.get_verse(chapter_number=chapter_number)
+  ```
   -----------------------------------
   ### 7. Get a specific verse from a specific chapter
-  `verse = pygita.get_verse(chapter_number=chapter_number,verse_number=verse_number)
-  `
+  ```python
+verse = pygita.get_verse(chapter_number=chapter_number,verse_number=verse_number)
+  ```
  -----------------------------------
 # Language
   English is the default language .To get verse or chapter in hindi pass language parameter with value of "hi" 
   
-  ` verse = pygita.get_verse(chapter_number=1,verse_number=1,language="hi")
+  ```python
+  verse = pygita.get_verse(chapter_number=1,verse_number=1,language="hi")
   verse = pygita.get_chapter(chapter_number=1,language="hi")
-  `
+  ```
 # Classes
  Above functions from point 3 to 4 returns a object of the `Chapter` class and from point 5 to 7 returns a object of the `Verse` class
 # Objects
