@@ -6,6 +6,12 @@ def readme():
         README = f.read()
     return README
 
+
+def requirements():
+    with open('requirements.txt', 'r') as f:
+        req = f.read()
+    return req
+
     setup(name='pygita',
           packages=find_packages(),
           version='1.0.0',
@@ -21,7 +27,7 @@ def readme():
              'get_chapter',
              'get_verse',
           ],
-          install_requires=['requests'],
+          install_requires=requirements()',
           include_package_data=True,
           long_description=readme(),
           long_description_content_type="text/markdown",
