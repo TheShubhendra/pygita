@@ -20,7 +20,7 @@ def requirements():
           of bhagavadgita.io api for Python 3''',
           author='Shubhendra Kushwaha',
           author_email='shubhendrakushwaha94@gmail.com',
-          url='https://github.com  /TheShubhendra/pygita',
+          url='https://github.com/TheShubhendra/pygita',
           keywords=[
              'auth',
              'auth_token',
