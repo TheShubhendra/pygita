@@ -12,9 +12,13 @@ pip install pygita
 ```
 
 ## Authentication
+
 - Register on [bhagavadgita.io](https://bhagavadgita.io)
+  
 - Create App
+ 
 - Copy  Client Id and Client Secret 
+  
 - `python
 pygita.auth(client_id,client_secret)
 `
@@ -42,8 +46,7 @@ pygita.auth_token(access_token)
 chapter_list = pygita.get_chapter()
   ```
   -----------------------------------
-  
-  
+ 
   ### 4. Get a specific chapter
   ```python
 chapter = pygita.get_chapter(chapter_number)
