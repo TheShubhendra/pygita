@@ -1,5 +1,42 @@
 import os
 from requests import get
+from messages import message
+from verse import get_verse, Verse
+
+""" function to get chapter(s) to get a single chapter
+
+pass the chapter number, to get all chapter don't pass anything.
+
+Toget chapter(s) in hindi pass language="hi"
+,by default language is English"""
+
+
+def get_chapter(chapter_number=None, language='en'):
+
+    if chapter_number is None:
+
+        return Chapter.all()
+    else:
+        token = os.environ.get('gita_access_token')
+        if language == 'hi':
+            url = \
+                '''https://bhagavadgita.io/api/v1/chapters/{chapter_number}?
+                access_token={token}&language=hi
+                '''.format(chapter_number=chapter_number,
+                           token=token)
+        else:
+            url = \
+                '''https://bhagavadgita.io/api/v1/chapters/{chapter_number}?
+                access_token={token}
+                '''.format(chapter_number=chapter_number,
+                           token=token)
+        request = get(url)
+        if request.status_code == 200:
+            response = request.json()
+        else:
+            print(message[request.status_code])
+            return
+        return Chapter(response, language)
 
 
 class Chapter:
@@ -53,11 +90,11 @@ class Chapter:
                 '''https://bhagavadgita.io/api/v1/chapters?access_token={token}& language=hi
                 '''.format(token=os.environ.get('gita_access_token'))
 
-         request = get(url)
+        request = get(url)
         if request.status_code == 200:
             response = request.json()
         else:
-            print message[request.status_code]
+            print(message[request.status_code])
             return
         return [Chapter(json_data, language=language) for json_data in
                 response]
