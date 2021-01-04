@@ -13,13 +13,13 @@ pip install pygita
 
 ## Authentication
 
-  - Register on [bhagavadgita.io](https://bhagavadgita.io)
+- Register on [bhagavadgita.io](https://bhagavadgita.io)
   
-  - Create App
+- Create App
  
-  - Copy  Client Id and Client Secret 
+- Copy  Client Id and Client Secret 
   
-  - `python
+- `python
 pygita.auth(client_id,client_secret)
 `
 
