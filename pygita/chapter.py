@@ -3,13 +3,6 @@ from requests import get
 from messages import message
 from verse import get_verse, Verse
 
-""" function to get chapter(s) to get a single chapter
-
-pass the chapter number, to get all chapter don't pass anything.
-
-Toget chapter(s) in hindi pass language='hi'
-,by default language is English"""
-
 
 def get_chapter(chapter_number=None, language='en'):
 

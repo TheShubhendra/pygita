@@ -2,12 +2,6 @@ import os
 from requests import get
 from messages import message
 from chpter import get_chapter
-""" function to get verse(s).
-To get a specific verse pass chapter number and verse number
-,to get list of all verses from a specific chapter pass only chapter number,
-to get list of all verses from all chaters pass nothing.
-Toget verse(s) in hindi pass language='hi
-,by default language is English """
 
 
 def get_verse(chapter_number=None, verse_number=None, language='en'):
