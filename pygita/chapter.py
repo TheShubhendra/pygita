@@ -7,7 +7,7 @@ from verse import get_verse, Verse
 
 pass the chapter number, to get all chapter don't pass anything.
 
-Toget chapter(s) in hindi pass language="hi"
+Toget chapter(s) in hindi pass language='hi'
 ,by default language is English"""
 
 

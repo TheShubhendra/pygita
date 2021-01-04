@@ -6,7 +6,7 @@ from chpter import get_chapter
 To get a specific verse pass chapter number and verse number
 ,to get list of all verses from a specific chapter pass only chapter number,
 to get list of all verses from all chaters pass nothing.
-Toget verse(s) in hindi pass language="hi"
+Toget verse(s) in hindi pass language='hi
 ,by default language is English """
 
 

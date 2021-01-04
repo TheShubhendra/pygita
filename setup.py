@@ -27,7 +27,7 @@ def requirements():
              'get_chapter',
              'get_verse',
           ],
-          install_requires=requirements()',
+          install_requires=requirements(),
           include_package_data=True,
           long_description=readme(),
           long_description_content_type="text/markdown",
