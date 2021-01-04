@@ -62,6 +62,16 @@ def get_chapter(chapter_number=None, language='en'):
 
 class Chapter:
     def __init__(self, json_data, language='en'):
+        """
+        Constructs all the necessary attributes for the Chapter object.
+
+        Parameters
+        ----------
+            json_data : json
+                data in json format
+            language : str
+                language hi/en
+        """
         self.language = language
         self.__json = json_data
         self.chapter_number = json_data['chapter_number']
@@ -159,6 +169,16 @@ def get_verse(chapter_number=None, verse_number=None, language='en'):
 
 class Verse:
     def __init__(self, json_data, language="en"):
+        """
+        Constructs all the necessary attributes for the Verse object.
+
+        Parameters
+        ----------
+            json_data : json
+                data in json format
+            language : str
+                language hi/en
+        """        
         self.language = language
         self.__json = json_data
         self.text = json_data["text"]
