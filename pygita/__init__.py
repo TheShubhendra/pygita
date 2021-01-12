@@ -3,7 +3,7 @@
 import os
 from requests import post, get
 from utils import generate_token
-from constants import (TOTAL CHAPTERS,
+from constants import (TOTAL_CHAPTERS,
                        TOTAL_VERSES,
                        VERSE_COUNT,
                        ERROR_MESSAGE,
@@ -13,23 +13,39 @@ from constants import (TOTAL CHAPTERS,
 
 class Client:
 
-    def __init__(self, client_id, client_secret, grant_type='client_credentials', scope='verse chapter'):
+    def __init__(self,
+                 client_id,
+                 client_secret,
+                 grant_type='client_credentials',
+                 scope='verse chapter',
+                 ):
         self.client_id = client_id
         self.client_secret = client_secret
-        self.token = generate_token(client_id, client_secret, grant_type, scope)
-       self.expiry = datetime.datetime.now() + TOKEN_VALIDITY
+        self.token.grant_type = grant_type
+        self.token.scope = scope
+        self.token.value = generate_token(client_id,
+                                          client_secre,
+                                          grant_type,
+                                          scope,
+                                          )
+        self.token.expiry = datetime.datetime.now() + TOKEN_VALIDITY
+
     def _re_authenticate(self):
-        self.token = generate_token(client_id, client_secret, grant_type, scope)
-        self.expiry = datetime.datetime.now() + TOKEN_VALIDITY
+        self.token.value = generate_token(self.client_id,
+                                          self.client_secret,
+                                          self.token.grant_type,
+                                          self.token.scope
+                                          )
+        self.token.expiry = datetime.datetime.now() + TOKEN_VALIDITY
 
     def _get_token(self):
-        if datetime.datetime.now() >= self.expiry:
+        if datetime.datetime.now() >= self.token.expiry:
             self._re_authenticate()
-        return self.token
+        return self.token.value
 
     def get_chapter(self, chapter_number, language='en'):
         if language == 'hi':
-              url = \
+            url = \
                   '''https://bhagavadgita.io/api/v1/chapters/{chapter_number}?
                 access_token={token}&language=hi
                 '''.format(chapter_number=chapter_number,
@@ -46,13 +62,13 @@ class Client:
         return Chapter(response, language)
 
     def get_verse(self, chapter_number=None, verse_number=None, language='en'):
-    token = self._get_token()
+        token = self._get_token()
     if verse_number is None and chapter_number is None:
         return Verse.all(language=language)
     elif verse_number is None:
         return Verse.all(chapter_number, language=language)
     elif chapter_number is None:
-        pass'
+        pass
     else:
         if language == 'hi':
             url = \
@@ -161,7 +177,7 @@ class Verse:
                 data in json format
             language : str
                 language hi/en
-        """        
+        """
         self.language = language
         self.__json = json_data
         self.text = json_data["text"]
