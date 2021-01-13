@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 from requests import post, get
+import datetime
 from utils import generate_token
 from constants import (TOTAL_CHAPTERS,
                        TOTAL_VERSES,
@@ -24,7 +25,7 @@ class Client:
         self.token.grant_type = grant_type
         self.token.scope = scope
         self.token.value = generate_token(client_id,
-                                          client_secre,
+                                          client_secret,
                                           grant_type,
                                           scope,
                                           )
@@ -45,17 +46,17 @@ class Client:
 
     def get_chapter(self, chapter_number, language='en'):
         if language == 'hi':
-            url = \
-                  '''https://bhagavadgita.io/api/v1/chapters/{chapter_number}?
-                access_token={token}&language=hi
-                '''.format(chapter_number=chapter_number,
-                           token=token)
+            url = '''https://bhagavadgita.io/api/v1/chapters
+/{chapter_number}?access_token={token}&
+language=hi'''.format(chapter_number=chapter_number,
+                      token=token,
+                      )
         else:
-            url = \
-                '''https://bhagavadgita.io/api/v1/chapters/{chapter_number}?
-                access_token={token}
-                '''.format(chapter_number=chapter_number,
-                           token=token)
+            url = '''https://bhagavadgita.io/api/v1/chapters
+/{chapter_number}?access_token={token}
+'''.format(chapter_number=chapter_number,
+           token=token,
+           )
         request = get(url)
         if request.status_code == 200:
             response = request.json()
@@ -63,34 +64,36 @@ class Client:
 
     def get_verse(self, chapter_number=None, verse_number=None, language='en'):
         token = self._get_token()
-    if verse_number is None and chapter_number is None:
-        return Verse.all(language=language)
-    elif verse_number is None:
-        return Verse.all(chapter_number, language=language)
-    elif chapter_number is None:
-        pass
-    else:
-        if language == 'hi':
-            url = \
-                '''https://bhagavadgita.io/api/v1/chapters/{chapter_number}/verses/{verse_number}
-                ?access_token={token}&language={language}
-                '''.format(chapter_number=chapter_number,
-                           verse_number=verse_number, language=language,
-                           token=token)
+        if verse_number is None and chapter_number is None:
+            return Verse.all(language=language)
+        elif verse_number is None:
+            return Verse.all(chapter_number, language=language)
+        elif chapter_number is None:
+            pass
         else:
-            url = \
-                '''https://bhagavadgita.io/api/v1/chapters/{chapter_number}/verses/{verse_number}
-                ?access_token={token}
-                '''.format(chapter_number=chapter_number,
-                           verse_number=verse_number,
-                           token=token)
-        request = get(url)
-        if request.status_code == 200:
-            response = request.json()
-        else:
-            print(message[request.status_code])
-            return
-        return Verse(json_data=response, language=language)
+            if language == 'hi':
+                url = '''https://bhagavadgita.io/api/v1/chapters
+/{chapter_number}/verses/{verse_number}
+?access_token={token}&language={language}
+'''.format(chapter_number=chapter_number,
+           verse_number=verse_number,
+           language=language,
+           token=token,
+           )
+            else:
+                url = '''https://bhagavadgita.io/api/v1/chapters
+/{chapter_number}/verses/{verse_number}
+?access_token={token}'''.format(chapter_number=chapter_number,
+                                verse_number=verse_number,
+                                token=token
+                                )
+           request = get(url)
+           if request.status_code == 200:
+                response = request.json()
+            else:
+                print(message[request.status_code])
+                return
+            return Verse(json_data=response, language=language)
 
 
 class Chapter:
@@ -148,14 +151,11 @@ class Chapter:
     def all(self, language='en'):
         token = self._get_token()
         if language == 'hi':
-            url = \
-                ''''https://bhagavadgita.io/api/v1/chapters?access_token={token}
-                '''.format(token=token
+            url = '''https://bhagavadgita.io/api/v1/chapters?
+access_token={token}'''.format(token=token)
         else:
-            url = \
-                '''https://bhagavadgita.io/api/v1/chapters?access_token={token}& language=hi
-                '''.format(token=token)
-
+            url = '''https://bhagavadgita.io/api/v1/chapters?
+access_token={token}& language=hi '''.format(token=token)
         request = get(url)
         if request.status_code == 200:
             response = request.json()
@@ -167,7 +167,7 @@ class Chapter:
 
 
 class Verse:
-    def __init__(self, json_data, language="en"):
+    def __init__(self, json_data, language='en'):
         """
         Constructs all the necessary attributes for the Verse object.
 
@@ -180,12 +180,12 @@ class Verse:
         """
         self.language = language
         self.__json = json_data
-        self.text = json_data["text"]
-        self.meaning = json_data["meaning"]
-        self.transliteration = json_data["transliteration"]
-        self.chapter_number = json_data["chapter_number"]
-        self.verse_number = json_data["verse_number"]
-        self.word_meanings = json_data["word_meanings"]
+        self.text = json_data['text']
+        self.meaning = json_data['meaning']
+        self.transliteration = json_data['transliteration']
+        self.chapter_number = json_data['chapter_number']
+        self.verse_number = json_data['verse_number']
+        self.word_meanings = json_data['word_meanings']
 
     def next(self):
         chapter_number = self.chapter_number
@@ -209,18 +209,18 @@ class Verse:
     def chapter(self):
         return get_chapter(self.chapter_number, language=self.language)
 
-    def all(self, chapter_number=None, language="en"):
+    def all(self, chapter_number=None, language='en''):
         token = self._get_token()
         if chapter_number is None:
-            url = """https://bhagavadgita.io/api/v1/verses?
-            access_token={token}""".format(token=token)
+            url = '''https://bhagavadgita.io/api/v1/verses?
+            access_token={token}'''.format(token=token)
         else:
-            url = """https://bhagavadgita.io/api/v1/chapters/{chapter_number}/verses?
+            url = '''https://bhagavadgita.io/api/v1/chapters/{chapter_number}/verses?
             access_token={token}
-            """.format(chapter_number=chapter_number,
+            '''.format(chapter_number=chapter_number,
                        token=token,
                        )
-        if language == "hi":
+        if language == 'en':
             url += "&language=hi"
         if token is None:
             print("Authentication not done")
