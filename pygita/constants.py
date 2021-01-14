@@ -19,4 +19,4 @@ looking for could not be found.''',
                  500: 'Server Error: Something went wrong on our end.',
                  }
 
-TOKEN_VALIDY = 5*60
+TOKEN_VALIDITY = 5*60
