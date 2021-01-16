@@ -7,6 +7,7 @@ from .exceptions import (PygitaException,
                          RequestFailedError,
                          NotFoundError,
                          ServerError,
+                         AuthorizationError,
                         )
 
 class Client:
@@ -74,11 +75,21 @@ class Client:
                 raise PygitaException("An unknown error occurred during the parsing of response.")
         return response
 
-    def requestToken(self):
+    def request_token(self):
         """
             Requests an access_token from the API.
             Returns token if access_token is successfully obtained.
             Otherwise, an exception is raised.
         """
-        
-        #request = post(self.__API__TOKEN_END_POINT
+        try:
+            request = post('https://bhagavadgita.io/auth/oauth/token',
+                           data={
+                                 'client_id': self.CLIENT_ID,
+                                 'client_secret': self.Client_secret,
+                                 'grant_type': self.grant_type,
+                                 'scope': self.scope,
+                                  })
+            token = request.json()['access_token']
+        except:
+            raise AuthorizationError("Unable to get access_token.")
+    return token
