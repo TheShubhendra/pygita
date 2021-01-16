@@ -35,3 +35,8 @@ looking for could not be found."""
 class ServerError(PygitaException):
     """Server Error: Something went wrong on server end."""
     pass
+
+
+class AuthorizationError(PygitaException):
+    """Unable to authorise using App credentials, Please cross check your CLIENT_ID and CLIENT_SECRET."""
+    pass
