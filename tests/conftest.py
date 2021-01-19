@@ -11,11 +11,11 @@ def client():
     return Client(CLIENT_ID, CLIENT_SECRET)
 
 
-@pytest.fixture(scope="session")
-def verse(client):
-    return client.get_verse(4,5)
+# @pytest.fixture(scope="session")
+# def verse(client):
+#     return client.get_verse(4,5)
 
 
-@pytest.fixture(scope="session")
-def chapter(client):
-    return client.get_chapter(4)
+# @pytest.fixture(scope="session")
+# def chapter(client):
+#     return client.get_chapter(4)
