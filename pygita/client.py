@@ -92,4 +92,4 @@ class Client:
             token = request.json()['access_token']
         except:
             raise AuthorizationError("Unable to get access_token.")
-    return token
+        return token
