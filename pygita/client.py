@@ -93,3 +93,12 @@ class Client:
         except:
             raise AuthorizationError("Unable to get access_token.")
         return token
+
+    def __request_verse(self, chapter_number, verse_number):
+        params = {"language":language}
+        url = self.__API__BASE_URL+self.__API__END_POINT+f'/chapter/{chapter_number}/verse/{chapter_number}'
+
+        self.__apiRequest(url, params)
+    def get_verse(self, chapter_number, verse_number, language="en"):
+        json_data = self.__request_verse(chapter_number, verse_number, language)
+        return Verse(self, json_data)
