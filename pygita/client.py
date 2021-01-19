@@ -1,5 +1,6 @@
 """ API Client module for handling requests and responses. """
 import requests
+import datetime
 from .exceptions import (PygitaException,
                          ConnectionError,
                          BadRequestError,
@@ -8,6 +9,8 @@ from .exceptions import (PygitaException,
                          NotFoundError,
                          ServerError,
                          AuthorizationError,
+                        )
+from .constants import (TOKEN_VALIDITY,
                         )
 
 class Client:
@@ -37,6 +40,8 @@ class Client:
             scope = 'verse chapter'
         self.CLIENT_ID = CLIENT_ID
         self.CLIENT_SECRET = CLIENT_SECRET
+        self.token_expiry = None
+        self.access_token = get_token()
         self.grant_type = grant_type
         self.scope = scope
         self.__API__BASE_URL = 'https://bhagavadgita.io'
@@ -94,6 +99,24 @@ class Client:
         except:
             raise AuthorizationError("Unable to get access_token.")
         return token
+
+    def is_token_valid(self):
+        if self.access_token is None or self.token_expiry is None:
+            return False
+        current_time = datetime.datetime.now()
+        if current_time >= self.token_expiry:
+            return False
+        return True
+
+    def get_token(self):
+        if is_token_valid()
+            return self.access_token
+        else:
+            self.request_token()
+            current_time = datetime.datetime.now()
+            validity = datetime.timedelta(seconds=TOKEN_VALIDITY)
+            self.token_expiry = current_time + validity
+            return self.access_token
 
     def __request_verse(self, chapter_number, verse_number, language):
         params = {"language":language}
