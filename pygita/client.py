@@ -43,7 +43,7 @@ class Client:
         self.__API__END_POINT = '/api/v1/'
         self.__API__TOKEN_END_POINT = '/auth/oauth/token'
 
-    def __apiRequest(self, url):
+    def __apiRequest(self, url, params):
         """
             Used internally by the Client object to make calls to the API.
             Parameters:
@@ -52,8 +52,9 @@ class Client:
             Returns the JSON response in the form of a Dictionary.
             Otherwise, an exception is raised.
         """
+        params["access_token"] = self.get_token()
         try:
-            response = requests.get(url)
+            response = requests.get(url, params)
         except requests.exceptions.RequestException:
             raise ConnectionError('Failed to connect to bhagavadgita.io.')
         response_code = response.status_code
