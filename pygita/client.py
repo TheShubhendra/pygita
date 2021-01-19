@@ -109,7 +109,7 @@ class Client:
         return True
 
     def get_token(self):
-        if is_token_valid()
+        if is_token_valid():
             return self.access_token
         else:
             self.request_token()
