@@ -16,7 +16,6 @@ class Verse:
                 language hi/en
         """
 
-        self.language = language
         self.__json = json_data
         self.text = json_data['text']
         self.meaning = json_data['meaning']

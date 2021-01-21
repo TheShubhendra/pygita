@@ -12,6 +12,7 @@ from .exceptions import (PygitaException,
                         )
 from .constants import (TOKEN_VALIDITY,
                         )
+from .verse import Verse
 
 class Client:
     """ API Client module for handling requests and responses. """
@@ -41,7 +42,7 @@ class Client:
         self.CLIENT_ID = CLIENT_ID
         self.CLIENT_SECRET = CLIENT_SECRET
         self.token_expiry = None
-        self.access_token = get_token()
+        self.access_token = None
         self.grant_type = grant_type
         self.scope = scope
         self.__API__BASE_URL = 'https://bhagavadgita.io'
@@ -88,10 +89,10 @@ class Client:
             Otherwise, an exception is raised.
         """
         try:
-            request = post('https://bhagavadgita.io/auth/oauth/token',
+            request = requests.post('https://bhagavadgita.io/auth/oauth/token',
                            data={
                                  'client_id': self.CLIENT_ID,
-                                 'client_secret': self.Client_secret,
+                                 'client_secret': self.CLIENT_SECRET,
                                  'grant_type': self.grant_type,
                                  'scope': self.scope,
                                   })
@@ -109,19 +110,22 @@ class Client:
         return True
 
     def get_token(self):
-        if is_token_valid():
+        if self.is_token_valid():
             return self.access_token
         else:
-            self.request_token()
+            self.access_token = self.request_token()
             current_time = datetime.datetime.now()
             validity = datetime.timedelta(seconds=TOKEN_VALIDITY)
             self.token_expiry = current_time + validity
             return self.access_token
 
     def __request_verse(self, chapter_number, verse_number, language):
-        params = {"language":language}
-        url = self.__API__BASE_URL+self.__API__END_POINT+f'/chapter/{chapter_number}/verse/{chapter_number}'
-        self.__apiRequest(url, params)
+        if language == "hi":
+            params = {"language":language}
+        else:
+            params = {}
+        url = self.__API__BASE_URL+self.__API__END_POINT+f'chapters/{chapter_number}/verses/{chapter_number}'
+        return self.__apiRequest(url, params)
 
     def get_verse(self, chapter_number, verse_number, language="en"):
         json_data = self.__request_verse(chapter_number, verse_number, language)
