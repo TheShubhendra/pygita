@@ -18,7 +18,7 @@ jobs:
           command: pip install -e .
           name: Build and Install
       - run:
-          command: pytest
+          command: flake8
           name: Test
           environment:
             CLIENT_ID: ${{ secrets.CLIENT_ID }}
