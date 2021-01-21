@@ -12,7 +12,13 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run:
-          command: ./manage.py test
+          command: python -m pip install flake8 pytest
+          name: Install requirements
+      - run:
+          command: pip install -e .
+          name: Build and Install
+      - run:
+          command: pytest
           name: Test
 
 workflows:
