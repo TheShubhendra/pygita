@@ -20,6 +20,10 @@ jobs:
       - run:
           command: pytest
           name: Test
+          environment:
+            CLIENT_ID: ${{ secrets.CLIENT_ID }}
+            CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          
 
 workflows:
   main:
