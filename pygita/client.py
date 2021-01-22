@@ -6,13 +6,13 @@ from .exceptions import (PygitaException,
                          BadRequestError,
                          UnauthorisedError,
                          RequestFailedError,
-                         NotFoundError,
                          ServerError,
                          AuthorizationError,
-                        )
+                         )
 from .constants import (TOKEN_VALIDITY,
                         )
 from .verse import Verse
+
 
 class Client:
     """ API Client module for handling requests and responses. """
@@ -20,14 +20,16 @@ class Client:
     def __init__(self,
                  CLIENT_ID,
                  CLIENT_SECRET,
-                 grant_type = None,
-                 scope = None,
+                 grant_type=None,
+                 scope=None,
                  ):
         """
             Client object constructer.
             parameters:
-                -CLIENT_ID: Obtained from Account Dashboard after registering an app on https://bhagavadgita.io
-                -CLIENT_SECRET: Obtained from Account Dashboard after registering an app on https://bhagavadgita.io.
+                -CLIENT_ID: Obtained from Account Dashboard
+                    after registering an app on https://bhagavadgita.io
+                -CLIENT_SECRET: Obtained from Account Dashboard
+                    after registering an app on https://bhagavadgita.io.
                 -grant_type: Grant type (optional).
                     Default value: client_credentials.
                 -scope: The resources that you would like to access(optional).
@@ -78,8 +80,9 @@ class Client:
                 response = response.json()
             except ValueError:
                 raise PygitaException("Server returned invalid response.")
-            except:
-                raise PygitaException("An unknown error occurred during the parsing of response.")
+            except Exception:
+                raise PygitaException("""An unknown error occurred /
+                during the parsing of response.""")
         return response
 
     def request_token(self):
@@ -88,16 +91,16 @@ class Client:
             Returns token if access_token is successfully obtained.
             Otherwise, an exception is raised.
         """
+        url = 'https://bhagavadgita.io/auth/oauth/token'
         try:
-            request = requests.post('https://bhagavadgita.io/auth/oauth/token',
-                           data={
+            request = requests.post(url, data={
                                  'client_id': self.CLIENT_ID,
                                  'client_secret': self.CLIENT_SECRET,
                                  'grant_type': self.grant_type,
                                  'scope': self.scope,
                                   })
             token = request.json()['access_token']
-        except:
+        except Exception:
             raise AuthorizationError("Unable to get access_token.")
         return token
 
@@ -119,14 +122,22 @@ class Client:
             self.token_expiry = current_time + validity
             return self.access_token
 
-    def __request_verse(self, chapter_number, verse_number, language):
+    def __request_verse(self,
+                        chapter_number,
+                        verse_number,
+                        language
+                        ):
         if language == "hi":
-            params = {"language":language}
+            params = {"language": language}
         else:
             params = {}
-        url = self.__API__BASE_URL+self.__API__END_POINT+f'chapters/{chapter_number}/verses/{chapter_number}'
+        url = self.__API__BASE_URL + self.__API__END_POINT
+        url += 'chapters/{}/verses/{}'.format(chapter_number, verse_number)
         return self.__apiRequest(url, params)
 
     def get_verse(self, chapter_number, verse_number, language="en"):
-        json_data = self.__request_verse(chapter_number, verse_number, language)
+        json_data = self.__request_verse(chapter_number,
+                                         verse_number,
+                                         language,
+                                         )
         return Verse(self, json_data)

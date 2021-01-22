@@ -1,10 +1,9 @@
 class Verse:
 
-    def __init__(
-        self,
-        client,
-        json_data,
-        ):
+    def __init__(self,
+                 client,
+                 json_data,
+                 ):
         """
         Constructs all the necessary attributes for the Verse object.
 

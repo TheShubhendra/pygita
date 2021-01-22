@@ -12,9 +12,12 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run:
-          command: ./manage.py test
+          command: pytest
           name: Test
-
+        environment:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          
 workflows:
   main:
     jobs:
