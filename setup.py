@@ -11,7 +11,7 @@ with open('requirements.txt', 'r') as f:
     requirements = f.read()
     setup(name='pygita',
           packages=find_packages(),
-          version='1.0.0',
+          version='2.0.0',
           license='MIT',
           description='''pygita is a wrapper
           of bhagavadgita.io api for Python 3''',
@@ -37,6 +37,8 @@ with open('requirements.txt', 'r') as f:
             'Programming Language :: Python :: 3.4',
             'Programming Language :: Python :: 3.5',
             'Programming Language :: Python :: 3.6',
-          ],
+            'Programming Language :: Python :: 3.8',
+            'Programming Language :: Python :: 3.9',
+          ], 
           python_requires='>=3.0',
           )
