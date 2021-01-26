@@ -9,7 +9,8 @@ clean:
 	rm -rf pygita.egg-info
 	rm -rf */__pycache__/
 	rm -rf .pytest_cache
-	rm -f */.coverage
+	rm -f .coverage
+	rm -
 lint:
 	flake8
 
