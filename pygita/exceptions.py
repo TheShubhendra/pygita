@@ -21,7 +21,7 @@ class ConnectionError(PygitaException):
 class BadRequestError(PygitaException):
 
     """Bad Request: The request was unacceptable
-due to wrong parameter(s)."""
+    due to wrong parameter(s)."""
 
     pass
 
@@ -43,7 +43,7 @@ class RequestFailedError(PygitaException):
 class NotFoundError(PygitaException):
 
     """Not Found: The chapter/verse number you are
-looking for could not be found."""
+    looking for could not be found."""
 
     pass
 

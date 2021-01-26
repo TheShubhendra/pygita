@@ -1,12 +1,20 @@
-from .data import (verse_7_7_en)
+from .data import verse_7_7_en
+
 #                   verse_14_20_hi,
 #                  )
 
 
 def test_specific_verse(client):
     verse_en = client.get_verse(7, 7)
-#    verse_hi = client.get_verse(14,20,"hi")
-    assert verse_en.json() == verse_7_7_en
+    #    verse_hi = client.get_verse(14,20,"hi")
+    assert verse_en.chapter_number == verse_7_7_en["chapter_number"]
+    assert verse_en.meaning == verse_7_7_en["meaning"]
+    assert verse_en.text == verse_7_7_en["text"]
+    assert verse_en.transliteration == verse_7_7_en["transliteration"]
+    assert verse_en.verse_number == verse_7_7_en["verse_number"]
+    assert verse_en.word_meaning == verse_7_7_en["word_meaning"]
+
+
 #    assert verse_hi.json() == verse_14_20_hi
 
 
