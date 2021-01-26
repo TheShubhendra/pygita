@@ -70,8 +70,10 @@ class Client:
         try:
             response = requests.get(url, params)
         except requests.exceptions.RequestException:
-            raise ServerConnectionError("""Failed to/
-            connect to bhagavadgita.io.""")
+            raise ServerConnectionError(
+                """Failed to/
+            connect to bhagavadgita.io."""
+            )
         response_code = response.status_code
         if response_code == 400:
             raise BadRequestError("Wrong parameters are passed")
