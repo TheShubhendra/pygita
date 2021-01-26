@@ -1,5 +1,6 @@
 from .data import chapter_7_en
 
+
 def test_specific_chapter(client):
     chapter = client.get_chapter(7)
     assert chapter.chapter_number == chapter_7_en["chapter_number"]

@@ -1,4 +1,4 @@
-""" API Client module for handling requests and responses. """
+"""API Client module for handling requests and responses."""
 import requests
 import datetime
 from .exceptions import (
@@ -16,8 +16,9 @@ from .constants import (
 from .verse import Verse
 from .chapter import Chapter
 
+
 class Client:
-    """ API Client module for handling requests and responses. """
+    """API Client module for handling requests and responses."""
 
     def __init__(
         self,
