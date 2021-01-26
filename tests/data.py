@@ -10,7 +10,7 @@ verse_14_20_hi = {
 
 verse_7_7_en = {
     "chapter_number": 7,
-    "meaning": "O Dhananjaya, there is nothing else whatsoever higher than Myself.\All this is strung on Me like pearls on a string.",
+    "meaning": "O Dhananjaya, there is nothing else whatsoever higher than Myself. All this is strung on Me like pearls on a string.",
     "text": "मत्त: परतरं नान्यत्किञ्चिदस्ति धनञ्जय |\nमयि सर्वमिदं प्रोतं सूत्रे मणिगणा इव ॥7॥\n",
     "transliteration": "mattaḥ parataraṁ nānyat kiñchid asti dhanañjaya\nmayi sarvam idaṁ protaṁ sūtre maṇi-gaṇā iva\n",
     "verse_number": "7",
