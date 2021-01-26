@@ -23,18 +23,18 @@ pip install pygita
   
 
 ## Usage
-  ### 1. Create a client.
+  ### 1. Create a client
 
    ```python
    from pygita import Client
    client = Client(CLIENT_ID, CLIENT_SECRET)
    ```
-  ### 2. Get a verse.
+  ### 2. Get a verse
   ```python
   verse = client.get_verse(verse_number, chapter_number)
   ```
   
-  ### 3. Get a chapter.
+  ### 3. Get a chapter
   ```python
   chapter = client.get_chapter(chapter_number)
   ```
