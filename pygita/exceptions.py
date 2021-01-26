@@ -9,7 +9,7 @@ class PygitaException(Exception):
     pass
 
 
-class ConnectionError(PygitaException):
+class ServerConnectionError(PygitaException):
     """Unable to connect with server."""
     pass
 
@@ -36,7 +36,7 @@ class NotFoundError(PygitaException):
     pass
 
 
-class ServerServerError(PygitaException):
+class ServerError(PygitaException):
     """Server Error: Something went wrong on server end."""
     pass
 
