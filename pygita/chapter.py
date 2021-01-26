@@ -3,7 +3,11 @@
 
 
 class Chapter:
-    def __init__(self, client, json_data):
+    def __init__(
+        self,
+        client,
+        json_data,
+    ):
         """
         Constructs all the necessary attributes for the Chapter object.
 
@@ -21,10 +25,8 @@ class Chapter:
         self.name_meaning = json_data["name_meaning"]
         self.name_translation = json_data["name_translation"]
         self.client = client
-        try:
-            self.name_transliterated = json_data["name_transliterated"]
-        except KeyError:
-            self.name_meaning = json_data["name_meaning"]
+        self.name_transliterated = json_data["name_transliterated"]
+        self.name_meaning = json_data["name_meaning"]
 
     def json(self):
         return self.__json

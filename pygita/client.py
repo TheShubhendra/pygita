@@ -14,7 +14,7 @@ from .constants import (
     TOKEN_VALIDITY,
 )
 from .verse import Verse
-
+from .chapter import Chapter
 
 class Client:
     """ API Client module for handling requests and responses. """
@@ -146,3 +146,19 @@ class Client:
             language,
         )
         return Verse(self, json_data)
+
+    def __request_chapter(self, chapter_number, language):
+        if language == "hi":
+            params = {"language": language}
+        else:
+            params = {}
+        url = self.__API__BASE_URL + self.__API__END_POINT
+        url += "chapters/{}".format(chapter_number)
+        return self.__apiRequest(url, params)
+
+    def get_chapter(self, chapter_number, language="en"):
+        json_data = self.__request_chapter(
+            chapter_number,
+            language,
+        )
+        return Chapter(self, json_data)

@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+
 class Verse:
     def __init__(
         self,
@@ -11,8 +15,6 @@ class Verse:
         ----------
             json_data : json
                 data in json format
-            language : str
-                language hi/en
         """
 
         self.__json = json_data
