@@ -16,7 +16,6 @@ class Chapter:
             json_data : json
                 data in json format.
         """
-
         self.__json = json_data
         self.chapter_number = int(json_data["chapter_number"])
         self.chapter_summary = json_data["chapter_summary"]
@@ -32,4 +31,5 @@ class Chapter:
         return self.__json
 
     def __str__(self):
+        """Returns the name of chapter."""
         return self.name

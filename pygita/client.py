@@ -18,6 +18,7 @@ from .chapter import Chapter
 
 
 class Client:
+
     """API Client module for handling requests and responses."""
 
     def __init__(
@@ -29,6 +30,7 @@ class Client:
     ):
         """
         Client object constructer.
+
         parameters:
             -CLIENT_ID: Obtained from Account Dashboard
                 after registering an app on https://bhagavadgita.io

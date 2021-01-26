@@ -16,7 +16,6 @@ class Verse:
             json_data : json
                 data in json format
         """
-
         self.__json = json_data
         self.text = json_data["text"]
         self.meaning = json_data["meaning"]
@@ -30,4 +29,5 @@ class Verse:
         return self.__json
 
     def __str__(self):
+        """Returns the text of the verse."""
         return self.text
