@@ -36,7 +36,7 @@ class NotFoundError(PygitaException):
     pass
 
 
-class ServerError(PygitaException):
+class ServerServerError(PygitaException):
     """Server Error: Something went wrong on server end."""
     pass
 
