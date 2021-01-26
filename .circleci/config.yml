@@ -15,10 +15,12 @@ jobs:
           command: pytest
           name: Test
         environment:
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          CLIENT_ID: $GITA_CLIENT_ID
+          CLIENT_SECRET: $GITA_CLIENT_SECRET
           
 workflows:
   main:
     jobs:
-      - build-and-test
+      - build-and-test:
+               context:
+                 - pygita
