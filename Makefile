@@ -7,7 +7,9 @@ clean:
 	rm -rf build
 	rm -rf dist
 	rm -rf pygita.egg-info
-
+	rm -rf */__pycache__/
+	rm -rf .pytest_cache
+	rm -f */.coverage
 lint:
 	flake8
 
