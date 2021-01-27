@@ -10,7 +10,6 @@ clean:
 	rm -rf */__pycache__/
 	rm -rf .pytest_cache
 	rm -f .coverage
-	rm -
 lint:
 	flake8
 
