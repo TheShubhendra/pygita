@@ -11,6 +11,12 @@ pygita is a wrapper of [bhagavadgita.io](https://bhagavadgita.io) api for Python
 ![Scrutinizer coverage](https://img.shields.io/scrutinizer/coverage/g/TheShubhendra/pygita)
 ![Requires.io (branch)](https://img.shields.io/requires/github/TheShubhendra/pygita/master)
 ![GitHub repo size](https://img.shields.io/github/repo-size/TheShubhendra/pygita)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pygita)
+![PyPI - Wheel](https://img.shields.io/pypi/wheel/pygita)
+![PyPI](https://img.shields.io/pypi/v/pygita)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+![PyPI - Status](https://img.shields.io/pypi/status/pygita)
+![PyPI - Format](https://img.shields.io/pypi/format/pygita)
 
 ## Installation
 Install it from pypi using pip
