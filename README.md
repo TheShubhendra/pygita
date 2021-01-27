@@ -6,6 +6,7 @@ pygita is a wrapper of [bhagavadgita.io](https://bhagavadgita.io) api for Python
 ![GitHub last commit](https://img.shields.io/github/last-commit/TheShubhendra/pygita)
 ![Build Status](https://img.shields.io/github/workflow/status/TheShubhendra/pygita/Python%20package)
 ![Code quality](https://img.shields.io/scrutinizer/quality/g/TheShubhendra/pygita)
+![Scrutinizer coverage](https://img.shields.io/scrutinizer/coverage/g/TheShubhendra/pygita)
 
 ## Installation
 Install it from pypi using pip
