@@ -1,0 +1,17 @@
+build:
+  environment:
+    python:
+      version: stackless-3.3.5
+      virtualenv: true
+  nodes:
+    my-tests:
+      dependencies:
+        before:
+          - pip install -r requirements.txt -r requirements-dev.txt
+      tests:
+        override:
+          - command: 'pytest --cov'
+            coverage:
+              file: '.coverage'
+              config_file: '.coveragerc'
+              format: 'py-cc'
