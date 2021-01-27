@@ -1,31 +1,13 @@
-from .data import (chapter_7_en,
-                   chapter_14_hi,
-                  )
+from .data import chapter_7_en
 
 
-def test_specific_chapte(client):
-    chapter_en = client.get_chapter(7)
-    chapter_hi = client.get_chapter(14,"hi")
-    assert chapter_en.json() == chapter_7_en
-    assert chapter_hi.json() == chapter_14_hi
-
-
-def test_chapter_methods(client, chapter):
-    next_chapter = chapter.next()
-    assert next_chapter.chapter_number == 5
-    
-    prev_chapter = chapter.previous()
-    assert prev_chapter.chapter_number == 3
-
-
-def test_chapter_method(client, verse, chapter):
-    verse_chapter = verse.chapter()
-    assert verse_chapter.__dict__ == chapter.__dict__
-
-
-def test_verse_method(client, verse, chapter):
-    assert chapter.verse(5).__dict__ == verse.__dict__
-    all_verses = chapter.verse()
-    assert type(all_verses) == list
-    assert len(all_verses) == 5
-    assert all_verses[4].__dict__ == verse.__dict__
+def test_specific_chapter(client):
+    chapter = client.get_chapter(7)
+    assert chapter.chapter_number == chapter_7_en["chapter_number"]
+    assert chapter.chapter_summary == chapter_7_en["chapter_summary"]
+    assert chapter.name == chapter_7_en["name"]
+    assert chapter.name_translation == chapter_7_en["name_translation"]
+    assert chapter.name_transliterated == chapter_7_en["name_transliterated"]
+    assert chapter.verses_count == chapter_7_en["verses_count"]
+    assert chapter.json() == chapter_7_en
+    assert str(chapter) == chapter_7_en["name"]
