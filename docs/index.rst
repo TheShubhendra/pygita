@@ -10,7 +10,7 @@ Welcome to pygita's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   pygita
 
 Indices and tables
 ==================
